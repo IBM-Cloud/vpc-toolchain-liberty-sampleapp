@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Sample Deploy Stage",
+  "longDescription": "The Delivery Pipeline automates continuous deployment.",
+  "type": "object",
+  "properties": {
+    "api-key": {
+      "description": "IBM Cloud API keys contain permissions that grant access to organizations, spaces, and Kubernetes clusters. You can obtain your API key with 'ibmcloud iam api-key-create' or via the console at https://cloud.ibm.com/iam/#/apikeys by clicking **Create API key** (Each API key only can be viewed once).",
+      "type": "string"
+    },
+    "vpc-region": {
+      "description": "The IBM Cloud VPC region",
+      "type": "string"
+    },
+    "vpc-ssh-key": {
+      "description": "VPC SSH Key",
+      "type": "string"
+    },
+    "target-resource-group": {
+      "description": "Resource Group",
+      "type": "string",
+      "pattern": "\\S"
+    },
+    
+    "ssh-private-key": {
+      "description": "SSH Private Key",
+      "type": "password"
+    },
+    "vpc-resources-prefix": {
+      "description": "Resources prefix",
+      "type": "string"
+    }
+  },
+  "required": [
+    "vpc-region",
+    "vpc-ssh-key",
+    "ssh-private-key",
+    "vpc-resources-prefix",
+    "target-resource-group",
+    "api-key"
+  ],
+  "form": [
+    {
+      "type": "password",
+      "readonly": false,
+      "title": "IBM Cloud API Key",
+      "key": "api-key"
+    },
+    {
+      "type": "text",
+      "readonly": false,
+      "title": "VPC Resource Group",
+      "key": "target-resource-group"
+    },
+    {
+      "type": "text",
+      "readonly": false,
+      "title": "VPC Region",
+      "key": "vpc-region"
+    },
+    {
+      "type": "text",
+      "readonly": false,
+      "title": "VPC SSH Key",
+      "key": "vpc-ssh-key"
+    },
+    {
+      "type": "text",
+      "readonly": false,
+      "title": "VPC Resources Prefix",
+      "key": "vpc-resources-prefix"
+    },
+    {
+      "type": "password",
+      "readonly": false,
+      "title": "SSH Private Key",
+      "key": "ssh-private-key"
+    }
+  ]
+}

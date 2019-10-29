@@ -1,0 +1,18 @@
+<server description="Sample Liberty server">
+
+  <featureManager>
+      <feature>microprofile-3.0</feature>
+      <feature>jndi-1.0</feature>
+  </featureManager>
+
+  <httpEndpoint httpPort="${default.http.port}" httpsPort="${default.https.port}"
+      id="defaultHttpEndpoint" host="*" />
+
+  <!-- Automatically expand WAR files and EAR files -->
+  <applicationManager autoExpand="true"/>
+
+  <applicationMonitor pollingRate="1000ms"/>
+
+  <webApplication name="sampleapp-1.0-SNAPSHOT" location="sampleapp-1.0-SNAPSHOT.war" contextRoot="/sampleapp"/>
+
+</server>

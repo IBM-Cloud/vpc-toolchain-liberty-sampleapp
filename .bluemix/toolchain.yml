@@ -1,0 +1,56 @@
+version: '2'
+template:
+  name: Continuous Delivery Toolchain for IBM Virtual Private Cloud
+  description: "This toolchain includes tools to develop and deploy your app. Depending on your app, when you create the toolchain, the GitHub repository will either be empty or will contain source code from your app.\n\nThis toolchain uses tools that are part of the Continuous Delivery service. If an instance of that service isn't already in your organization, when you click **Create**, it is automatically added at no cost to you. For more information and terms, see the [IBM Cloud catalog](/catalog/services/continuous-delivery/).\n\nTo get started, click **Create**."
+  required:
+    - repo
+    - build
+
+toolchain:
+  name: 'vpc-toolchain-{{timestamp}}'
+
+services:
+  # Github repos hostedgit
+  repo:
+    service_id: githubpublic
+    parameters:
+      source_repo_url: "https://github.com/IBM-Cloud/vpc-toolchain-liberty-sampleapp"
+      repo_name: "{{toolchain.name}}"
+      type: clone
+      has_issues: true
+      enable_traceability: true
+
+  # Pipelines
+  build:
+    service_id: pipeline
+    parameters:
+      services:
+        - repo
+      name: "{{form.pipeline.parameters.app-name}}"
+      ui-pipeline: true
+      configuration:
+        content:
+          $text: pipeline.yml
+        env:
+          REPO: repo
+          API_KEY: "{{form.pipeline.parameters.api-key}}"
+          VPC_REGION: "{{form.pipeline.parameters.vpc-region}}"
+          VPC_SSH_KEYS: "{{form.pipeline.parameters.vpc-ssh-key}}"
+          VPC_RESOURCE_GROUP: '{{form.pipeline.parameters.target-resource-group}}'
+          PRIVATE_KEY: "{{form.pipeline.parameters.ssh-private-key}}"
+          VPC_RESOURCES_PREFIX: "{{form.pipeline.parameters.vpc-resources-prefix}}"
+        execute: true
+
+#Deployment
+form:
+  pipeline:
+    schema:
+      $ref: deploy.json
+    parameters:
+      app-name: "{{app-name}}"
+      toolchain-name: "{{toolchain-name}}"
+      vpc-region: "{{vpc-region}}"
+      vpc-ssh-key: "{{vpc-ssh-key}}"
+      target-resource-group: 'default'
+      ssh-private-key: "{{ssh-private-key}}"
+      vpc-resources-prefix: "{{vpc-resources-prefix}}"

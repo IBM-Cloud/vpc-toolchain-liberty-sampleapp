@@ -1,0 +1,67 @@
+<!--
+  Copyright (c) 2016 IBM Corp.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<html>
+    <head>
+        <script src="js/mpData.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Asap" rel="stylesheet">
+        <link rel="stylesheet" href="css/main.css">
+        <link href="img/favicon.png" rel="icon" />
+        <link href="img/favicon.png" rel="shortcut icon" />
+    </head>
+    <body>
+        <section id="appIntro">
+            <div id="titleSection">
+                <h1 id="appTitle">System Properties Sample</h1>
+                <div class="line"></div>
+                <div class="headerImage"></div>
+                <h2>Congrats on your shiny new sample app running on WebSphere Liberty!</h2>
+                <h2 id="hostnameValue"></h2>
+                <p>This sample app uses a System Properties microservice to return the properties of the system that you're running.</p>
+            </div>
+
+            <div class="msSection" id="systemProperties">
+                <div class="headerRow">
+                    <div class="headerIcon"><img src="img/sysProps.svg"/></div>
+                    <div class="headerTitle" id="sysPropTitle"><h2>System Properties</h2></div>
+                </div>
+                <div class="sectionContent">
+                    <table id="systemPropertiesTable">
+                        <tbody id="sysPropertiesTableBody">
+                        <tr><th>Properties</th><th>Value</th></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+        <script>
+            displayHostname();
+            displaySystemProperties();
+        </script>
+    </body>
+
+    <footer class="bodyFooter">
+        <div class="bodyFooterLink">
+          <a id="licenseLink"href="https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/19.0.0.10/lafiles/en.html">License</a>
+          <a href="https://developer.ibm.com/answers/smartspace/wasdev/index.html">Wasdev Forum</a>
+          <a href="https://www.ibm.com/support/knowledgecenter/SSAW57_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/cwlp_about.html">Liberty Documentation</a>
+          <a href="https://developer.ibm.com/wasdev/">WASdev Community</a>
+        </div>
+        <p id="footer_text">Built on Open Liberty an IBM open source project</p>
+        <p id="footer_copyright">&copy;Copyright IBM Corp. 2019</p>
+    </footer>
+</html>
