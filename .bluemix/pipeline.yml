@@ -5,6 +5,9 @@ stages:
   - type: git
     branch: master
     service: ${REPO}
+  triggers:
+  - type: git
+    events: '{"push":true,"pull_request":false,"pull_request_closed":false}'    
   properties:
   - name: TF_VAR_ibmcloud_api_key
     value: "${API_KEY}"
