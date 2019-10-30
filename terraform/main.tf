@@ -168,6 +168,7 @@ resource "null_resource" "vsi_app" {
 
   provisioner "remote-exec" {
     inline = [
+      "cloud-init status --wait",
       "apt-get update",
       "apt-get install -y openjdk-8-jre unzip",
       "echo \"HOSTNAME=$(cat /etc/hostname)\" >> /etc/environment"
