@@ -150,7 +150,7 @@ This IBM Cloud Toolchain for VPC provides a starting point for creating applicat
       - [Virtual server instances](https://cloud.ibm.com/vpc/compute/vs)
       - [Subnets](https://cloud.ibm.com/vpc/network/subnets)
 
-   1. If you refresh the page multiple times you should see the value next to `Running on virtual server instance:` change to the actual virtual server that is responding to your request.
+   1. Access the application again using your browser and the address of the load balancer.  If you refresh the page multiple times you should see the value next to `Running on virtual server instance:` change to the actual virtual server that is responding to your request.
 
    1. Back to the repository on your local machine. Make a small change to the `webapp/index.html`, for example add the `<p>This is working great !!</p>` entry as shown below. Save your changes and push the updates back to GitHub.
 
