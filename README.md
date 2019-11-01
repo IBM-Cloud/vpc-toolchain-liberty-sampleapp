@@ -1,6 +1,6 @@
 ## IBM Cloud Toolchain for VPC
 
-This is a companion repository to a blog post that is available **coming soon**.
+This is a companion repository to a blog post that is available [here](https://www.ibm.com/cloud/blog/application-deployment-to-a-virtual-private-cloud-with-a-devops-toolchain).
 
 ## Requirements
 
