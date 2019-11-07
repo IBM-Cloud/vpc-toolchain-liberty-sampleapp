@@ -6,7 +6,11 @@
   "properties": {
     "api-key": {
       "description": "IBM Cloud API keys contain permissions that grant access to organizations, spaces, and Kubernetes clusters. You can obtain your API key with 'ibmcloud iam api-key-create' or via the console at https://cloud.ibm.com/iam/#/apikeys by clicking **Create API key** (Each API key only can be viewed once).",
-      "type": "string"
+      "type": "string",
+      "pattern": "\\S",
+      "validator": {
+        "v-type": "api-key"
+      }
     },
     "vpc-region": {
       "description": "The IBM Cloud VPC region",
@@ -19,7 +23,10 @@
     "target-resource-group": {
       "description": "Resource Group",
       "type": "string",
-      "pattern": "\\S"
+      "validator": {
+        "v-type": "resource-group",
+        "params": ["api-key"]
+      }
     },
     
     "ssh-private-key": {
@@ -40,6 +47,10 @@
     "api-key"
   ],
   "form": [
+    {
+      "type": "validator",
+      "url": "/devops/validator/validator-v1.html"
+    },
     {
       "type": "password",
       "readonly": false,
