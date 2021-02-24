@@ -15,4 +15,12 @@
 src/main/liberty/config/server.env
 src/main/resources/localdev-config.json
 
-.terraform
+[._]*.sw[a-p]
+terraform.tfvars
+terraform.tfstate.lock.info
+*.tfstate
+*.tfstate.backup
+.terraform*
+resources.sh
+*.tfvars
+*.plan
