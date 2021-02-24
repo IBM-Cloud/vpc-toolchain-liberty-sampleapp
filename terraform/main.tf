@@ -18,10 +18,6 @@ provider "ibm" {
   region           = var.vpc_region
 }
 
-provider "null" {
-  version = "~> 2.1"
-}
-
 data "ibm_resource_group" "group" {
   name = var.vpc_resource_group
 }
@@ -122,7 +118,7 @@ resource ibm_is_instance "vsi_app" {
 resource "ibm_is_lb" "lb_public" {
   name           = "${var.vpc_resources_prefix}-lb-public"
   type           = "public"
-  subnets        = [ibm_is_subnet.sub_app.*.id]
+  subnets        = ibm_is_subnet.sub_app.*.id
   resource_group = data.ibm_resource_group.group.id
 }
 
