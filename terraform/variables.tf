@@ -4,9 +4,9 @@ variable "vpc_region" {
   description = "Region to deploy."
 }
 
-variable "vpc_ssh_keys" {
+variable "vpc_ssh_key" {
   description = "ssh keys used to access virtual server instances after creation."
-  default = []
+  default = ""
 }
 
 variable "vpc_resource_group" {

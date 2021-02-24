@@ -11,5 +11,5 @@ output sg_bastion_id {
 }
 
 output "bastion_subnet_cidr_block" {
-  value = ibm_is_subnet.sub_bastion.ipv4_cidr_block
+  value = ibm_is_subnet.sub_bastion.0.ipv4_cidr_block
 }

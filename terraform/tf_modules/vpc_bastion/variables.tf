@@ -1,8 +1,8 @@
 # variable "ibmcloud_api_key" {}
 
-variable "vpc_ssh_keys" {
+variable "vpc_ssh_key" {
   description = "ssh keys used to access virtual server instances after creation."
-  default     = []
+  default     = ""
 }
 
 variable "vpc_region" {

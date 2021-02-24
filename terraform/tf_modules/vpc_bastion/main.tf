@@ -1,3 +1,16 @@
+terraform {
+  required_providers {
+    ibm = {
+      source = "IBM-Cloud/ibm"
+      version = ">= 1.12.0"
+    }
+    null = {
+      source = "hashicorp/null"
+    }
+  }
+  required_version = ">= 0.12"
+}
+
 resource ibm_is_security_group "sg_bastion" {
   name = var.vpc_vsi_security_group_name
   vpc  = var.vpc_id
@@ -9,7 +22,7 @@ resource "ibm_is_security_group_rule" "sg_bastion_inbound_tcp_22" {
   direction = "inbound"
   remote    = "0.0.0.0/0"
 
-  tcp = {
+  tcp {
     port_min = 22
     port_max = 22
   }
@@ -20,7 +33,7 @@ resource "ibm_is_security_group_rule" "sg_bastion_outbound_tcp_22" {
   direction = "outbound"
   remote    = ibm_is_security_group.sg_bastion.id
 
-  tcp = {
+  tcp {
     port_min = 22
     port_max = 22
   }
@@ -37,7 +50,7 @@ resource "ibm_is_security_group_rule" "sg_maintenance_inbound_tcp_22" {
   direction = "inbound"
   remote    = ibm_is_security_group.sg_bastion.id
 
-  tcp = {
+  tcp {
     port_min = 22
     port_max = 22
   }
@@ -54,7 +67,7 @@ resource "ibm_is_security_group_rule" "sg_maintenance_outbound_tcp_53" {
   direction = "outbound"
   remote    = "0.0.0.0/0"
 
-  tcp = {
+  tcp {
     port_min = 53
     port_max = 53
   }
@@ -65,7 +78,7 @@ resource "ibm_is_security_group_rule" "sg_maintenance_outbound_udp_53" {
   direction = "outbound"
   remote    = "0.0.0.0/0"
 
-  udp = {
+  udp {
     port_min = 53
     port_max = 53
   }
@@ -76,7 +89,7 @@ resource "ibm_is_security_group_rule" "sg_maintenance_outbound_tcp_443" {
   direction = "outbound"
   remote    = "0.0.0.0/0"
 
-  tcp = {
+  tcp {
     port_min = 9443
     port_max = 9443
   }
@@ -87,15 +100,14 @@ resource "ibm_is_security_group_rule" "sg_maintenance_outbound_tcp_80" {
   direction = "outbound"
   remote    = "0.0.0.0/0"
 
-  tcp = {
+  tcp {
     port_min = 9080
     port_max = 9080
   }
 }
 
 data ibm_is_ssh_key "ssh_key" {
-  count = "${length(var.vpc_ssh_keys)}"
-  name  = "${var.vpc_ssh_keys[count.index]}"
+  name  = var.vpc_ssh_key
 }
 
 resource ibm_is_subnet "sub_bastion" {
@@ -108,7 +120,7 @@ resource ibm_is_subnet "sub_bastion" {
 }
 
 data ibm_is_image "image_name" {
-  name = "${var.vpc_vsi_image_name}"
+  name = var.vpc_vsi_image_name
 }
 
 resource ibm_is_instance "vpc_vsi_bastion" {
@@ -116,12 +128,12 @@ resource ibm_is_instance "vpc_vsi_bastion" {
   name           = var.vpc_vsi_name
   vpc            = var.vpc_id
   zone           = lookup(var.vpc_zones, "${var.vpc_region}-availability-zone-${count.index + 1}")
-  keys           = [data.ibm_is_ssh_key.ssh_key.*.id]
+  keys           = data.ibm_is_ssh_key.ssh_key.*.id
   image          = data.ibm_is_image.image_name.id
   profile        = var.vpc_vsi_image_profile
   resource_group = var.vpc_resource_group_id
 
-  primary_network_interface = {
+  primary_network_interface {
     subnet          = element(ibm_is_subnet.sub_bastion.*.id, count.index)
     security_groups = [ibm_is_security_group.sg_bastion.id, ibm_is_security_group.sg_maintenance.id]
   }
@@ -130,5 +142,5 @@ resource ibm_is_instance "vpc_vsi_bastion" {
 resource ibm_is_floating_ip "vpc_vsi_bastion_fip" {
   count  = 1
   name   = var.vpc_vsi_fip_name
-  target = ibm_is_instance.vpc_vsi_bastion.primary_network_interface.0.id
+  target = ibm_is_instance.vpc_vsi_bastion.0.primary_network_interface.0.id
 }
