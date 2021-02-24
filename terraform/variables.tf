@@ -2,6 +2,7 @@ variable "ibmcloud_api_key" {}
 
 variable "vpc_region" {
   description = "Region to deploy."
+  default     = "us-south"
 }
 
 variable "vpc_ssh_key" {
@@ -11,6 +12,7 @@ variable "vpc_ssh_key" {
 
 variable "vpc_resource_group" {
   description = "resource group for the resources created."
+  default     = "default"
 }
 
 variable "ssh_private_key" {
@@ -20,6 +22,7 @@ variable "ssh_private_key" {
 
 variable "vpc_resources_prefix" {
   description = "value prefixed to all resources created."
+  default     = "lib"
 }
 
 variable "generation" {
