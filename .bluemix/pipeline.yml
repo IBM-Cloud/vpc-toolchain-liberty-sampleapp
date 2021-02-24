@@ -15,8 +15,8 @@ stages:
   - name: TF_VAR_vpc_region
     value: "${VPC_REGION}"
     type: text
-  - name: TF_VAR_vpc_ssh_keys
-    value: "${VPC_SSH_KEYS}"
+  - name: TF_VAR_vpc_ssh_key
+    value: "${VPC_SSH_KEY}"
     type: text
   - name: TF_VAR_vpc_resource_group
     value: "${VPC_RESOURCE_GROUP}"

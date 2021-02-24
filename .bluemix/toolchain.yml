@@ -35,7 +35,7 @@ services:
           REPO: repo
           API_KEY: "{{form.pipeline.parameters.api-key}}"
           VPC_REGION: "{{form.pipeline.parameters.vpc-region}}"
-          VPC_SSH_KEYS: "{{form.pipeline.parameters.vpc-ssh-key}}"
+          VPC_SSH_KEY: "{{form.pipeline.parameters.vpc-ssh-key}}"
           VPC_RESOURCE_GROUP: '{{form.pipeline.parameters.target-resource-group}}'
           PRIVATE_KEY: "{{form.pipeline.parameters.ssh-private-key}}"
           VPC_RESOURCES_PREFIX: "{{form.pipeline.parameters.vpc-resources-prefix}}"
