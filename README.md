@@ -6,7 +6,7 @@ This is a companion repository to a blog post that is available [here](https://w
 
 - A public [GitHub](https://github.com) account. 
 
-- A Pay as You Go (PAYG) IBM Cloud account, the toolchain that is created by this repository will create resources in IBM Cloud VPC that will cost you money to run.  The currently smallest available virtual server instance on VPC Gen 1 is used, i.e. 2 cores, 4 GB RAM and 100 GB of storage. We start with:
+- A Pay as You Go (PAYG) IBM Cloud account, the toolchain that is created by this repository will create resources in IBM Cloud VPC that will cost you money to run.  The currently smallest available virtual server instance on VPC Gen 2 is used, i.e. 2 cores, 4 GB RAM and 100 GB of storage. We start with:
    - 2 virtual server instances (VSI): 1 for running the sample app and 1 bastion host
    - scale up to 3 VSIs for running the sample app (optional). 
 
@@ -19,7 +19,7 @@ This is a companion repository to a blog post that is available [here](https://w
       ibmcloud plugin install infrastructure-service
    ```
 
-- Your IBM Cloud user account needs permissions to create and manage VPC resources. See the list of required permissions for [VPC Gen 1](/docs/vpc-on-classic?topic=vpc-on-classic-managing-user-permissions-for-vpc-resources). 
+- Your IBM Cloud user account needs permissions to create and manage VPC resources. See the list of required permissions for [VPC Gen 2](https://cloud.ibm.com/docs/vpc-on-classic?topic=vpc-on-classic-managing-user-permissions-for-vpc-resources). 
 
 - This toolchain requires an API Key that will run with your permissions. During the toolchain creation, you will be prompted to either create a new API key for use by the toolchain or paste an existing one.  An API key is a unique code that is passed to an API to identify the application or user that is calling it. To prevent malicious use of an API, you can use API keys to track and control how that API is used. For more information about API keys, see [Understanding API keys](https://cloud.ibm.com/docs/iam?topic=iam-manapikey).
 

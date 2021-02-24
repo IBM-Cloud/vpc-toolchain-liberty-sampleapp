@@ -23,7 +23,7 @@ variable "vpc_resources_prefix" {
 }
 
 variable "generation" {
-  default = 1
+  default = 2
 }
 
 variable "vpc_zones" {
@@ -40,6 +40,12 @@ variable "vpc_zones" {
     jp-tok-availability-zone-1   = "jp-tok-1"
     jp-tok-availability-zone-2   = "jp-tok-2"
     jp-tok-availability-zone-3   = "jp-tok-3"
+    jp-osa-availability-zone-1   = "jp-osa-1"
+    jp-osa-availability-zone-2   = "jp-osa-2"
+    jp-osa-availability-zone-3   = "jp-osa-3"    
+    us-east-availability-zone-1 = "us-east-1"
+    us-east-availability-zone-2 = "us-east-2"
+    us-east-availability-zone-3 = "us-east-3"
     us-south-availability-zone-1 = "us-south-1"
     us-south-availability-zone-2 = "us-south-2"
     us-south-availability-zone-3 = "us-south-3"
@@ -47,11 +53,11 @@ variable "vpc_zones" {
 }
 
 variable "vpc_image_profile" {
-  default = "cc1-2x4"
+  default = "cx2-2x4"
 }
 
 variable "vpc_image_name" {
-  default = "ubuntu-18.04-amd64"
+  default = "ibm-ubuntu-20-04-minimal-amd64-2"
 }
 
 variable "vpc_zone_count" {
