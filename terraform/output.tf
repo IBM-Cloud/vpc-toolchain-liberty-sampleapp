@@ -1,5 +1,5 @@
 output "vpc_vsi_bastion_fip" {
-  value = "${module.vpc_bastion.vpc_vsi_bastion_fip}"
+  value = module.vpc_bastion.vpc_vsi_bastion_fip
 }
 
 output "vpc_vsi_1_ip" {
@@ -15,13 +15,13 @@ output "vpc_vsi_3_ip" {
 }
 
 output "lb_public_hostname" {
-  value = "${ibm_is_lb.lb_public.hostname}"
+  value = ibm_is_lb.lb_public.hostname
 }
 
 output "vpc_vsi_addresses" {
-  value = "${ibm_is_instance.vsi_app.*.primary_network_interface.0.primary_ipv4_address}"
+  value = ibm_is_instance.vsi_app.*.primary_network_interface.0.primary_ipv4_address
 }
 
 output "vpc_zone_count" {
-  value = "${var.vpc_zone_count}"
+  value = var.vpc_zone_count
 }

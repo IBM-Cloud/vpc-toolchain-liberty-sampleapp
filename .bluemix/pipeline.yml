@@ -56,7 +56,7 @@ stages:
       #!/bin/bash
       set -eo pipefail
       bash scripts/apply_deploy_test.sh
-    docker_image: ibmterraform/terraform-provider-ibm-docker:v0.18.0
+    docker_image: ibmterraform/terraform-provider-ibm-docker:latest
 - name: VPC Clean-up Stage
   inputs:
   - type: job
@@ -78,4 +78,4 @@ stages:
       #!/bin/bash
       set -eo pipefail
       bash scripts/destroy.sh
-    docker_image: ibmterraform/terraform-provider-ibm-docker:v0.18.0
+    docker_image: ibmterraform/terraform-provider-ibm-docker:latest
