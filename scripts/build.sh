@@ -10,7 +10,7 @@ GIT_REMOTE_URL=$(git config --get remote.origin.url)
 
 echo "TF_VAR_ibmcloud_api_key=${TF_VAR_ibmcloud_api_key}" >> build.properties
 echo "TF_VAR_vpc_region=${TF_VAR_vpc_region}" >> build.properties
-echo "TF_VAR_vpc_ssh_key=[\"${TF_VAR_vpc_ssh_key}\"]" >> build.properties
+echo "TF_VAR_vpc_ssh_key=${TF_VAR_vpc_ssh_key}" >> build.properties
 echo "TF_VAR_vpc_resource_group=${TF_VAR_vpc_resource_group}" >> build.properties
 echo "TF_VAR_vpc_resources_prefix=${TF_VAR_vpc_resources_prefix}" >> build.properties
 
