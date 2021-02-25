@@ -10,7 +10,7 @@ This is a companion repository to a blog post that is available [here](https://w
    - 2 virtual server instances (VSI): 1 for running the sample app and 1 bastion host
    - scale up to 3 VSIs for running the sample app (optional). 
 
-- The sample application runs on [WebSphere Liberty V19.0.0.10 with Java EE 8 Web Profile](https://developer.ibm.com/wasdev/downloads/#asset/runtimes-wlp-webProfile8) with a JVM heap size set to a maximum of 512M. The WebSphere Liberty product is licensed for development and limited production use. The full license terms can be viewed [here](https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/19.0.0.10/lafiles/en.html).
+- The sample application runs on [WebSphere Liberty V21.0.0.2 with Java EE 8 Web Profile](https://www.ibm.com/support/pages/node/6250961#asset/runtimes-wlp-webProfile8) with a JVM heap size set to a maximum of 512M. The WebSphere Liberty product is licensed for development and limited production use. The full license terms can be viewed [here](https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/19.0.0.10/lafiles/en.html).
 
 - Install the IBM Cloud CLI by [following these steps](https://cloud.ibm.com/docs/cli?topic=cloud-cli-install-ibmcloud-cli). 
 
