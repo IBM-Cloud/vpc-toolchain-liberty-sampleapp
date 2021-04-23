@@ -25,10 +25,6 @@ variable "vpc_resources_prefix" {
   default     = "lib"
 }
 
-variable "generation" {
-  default = 2
-}
-
 variable "vpc_zones" {
   default = {
     au-syd-availability-zone-1   = "au-syd-1"
