@@ -120,8 +120,8 @@ resource "ibm_is_security_group" "sg_lb" {
   resource_group = data.ibm_resource_group.group.id
 }
 
-resource "ibm_is_security_group_rule" "sg_app_inbound_tcp_80" {
-  group     = ibm_is_security_group.sg_app.id
+resource "ibm_is_security_group_rule" "sg_lb_inbound_tcp_80" {
+  group     = ibm_is_security_group.sg_lb.id
   direction = "inbound"
   remote    = "0.0.0.0/0"
 
@@ -131,8 +131,8 @@ resource "ibm_is_security_group_rule" "sg_app_inbound_tcp_80" {
   }
 }
 
-resource "ibm_is_security_group_rule" "sg_app_outbound_all" {
-  group     = ibm_is_security_group.sg_app.id
+resource "ibm_is_security_group_rule" "sg_lb_outbound_all" {
+  group     = ibm_is_security_group.sg_lb.id
   direction = "outbound"
   remote    = "0.0.0.0/0"
 }
